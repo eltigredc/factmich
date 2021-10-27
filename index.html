@@ -127,7 +127,7 @@
     bubble = document.querySelector('.textBox')
     mich = document.querySelector('.mich')
     btn.addEventListener('click', (event) => {
-      fetch('https://uselessfacts.jsph.pl/today.json?language=en')
+      fetch('https://uselessfacts.jsph.pl/random.json?language=en')
       .then(response => response.json())
       .then((data) => {
         mich.style.backgroundImage = "url('mich2.png')"
