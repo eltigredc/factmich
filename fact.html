@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Micha's Fact Of the day</title>
+  <style>
+    .container{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      /*width: 100vw;*/
+      padding: 0 50px;
+    }
+    .mich{
+      height: 150px;
+      width: 150px;
+      background-image: url('mich1.png');
+      background-size: cover;
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+    .btn{
+      background-color: grey;
+      padding: 20px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .textBox{
+      /*width: 100%;*/
+      /*margin-left: 500px;*/
+      opacity: 0;
+      transition: all ease 1s;
+    }
+   body {
+   height: 100vh;
+   margin: 0;
+   /*display: grid;
+   place-items: center;*/
+   font: 2vw system-ui;
+   background-color: #f9cdad;
+   box-sizing: border-box;
+}
+ body p {
+   transform: translatey(0px);
+   animation: float 5s ease-in-out infinite;
+   mix-blend-mode: multiply;
+   text-align: center;
+   text-transform: uppercase;
+   font-weight: bold;
+   letter-spacing: 3px;
+   font-size: 15px;
+   color: #774f38;
+   background-color: #ece5ce;
+   padding: 50px;
+   border-radius: 11px;
+   position: relative;
+   box-shadow: 20px 20px #83af9b;
+   font-family: "Baloo 2", cursive;
+}
+ body p:after {
+   transform: translatey(0px);
+   animation: float2 5s ease-in-out infinite;
+   content: ".";
+   font-weight: bold;
+   -webkit-text-fill-color: #ece5ce;
+   text-shadow: 22px 22px #83af9b;
+   text-align: left;
+   font-size: 55px;
+   width: 55px;
+   height: 11px;
+   line-height: 30px;
+   border-radius: 11px;
+   background-color: #ece5ce;
+   position: absolute;
+   display: block;
+   bottom: -30px;
+   left: calc(50% + 27px);
+   box-shadow: 22px 22px #83af9b;
+   z-index: -2;
+}
+ @keyframes float {
+   0% {
+     transform: translatey(0px);
+  }
+   50% {
+     transform: translatey(-20px);
+  }
+   100% {
+     transform: translatey(0px);
+  }
+}
+ @keyframes float2 {
+   0% {
+     line-height: 30px;
+     transform: translatey(0px);
+  }
+   55% {
+     transform: translatey(-20px);
+  }
+   60% {
+     line-height: 10px;
+  }
+   100% {
+     line-height: 30px;
+     transform: translatey(0px);
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <p class="textBox"></p>
+    <div class="mich"></div>
+    <div class="btn">Fact Of the Day</div>
+  </div>
+
+
+  <script>
+    btn = document.querySelector('.btn')
+    bubble = document.querySelector('.textBox')
+    mich = document.querySelector('.mich')
+    btn.addEventListener('click', (event) => {
+      fetch('https://uselessfacts.jsph.pl/today.json?language=en')
+      .then(response => response.json())
+      .then((data) => {
+        mich.style.backgroundImage = "url('mich2.png')"
+        bubble.innerText = data.text
+        bubble.style.opacity = 1;
+      });
+    })
+  </script>
+
+</body>
+</html>
